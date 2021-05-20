@@ -25,8 +25,8 @@ task_6_2 = task_6[1:5]
 task_6_3 = task_6[5:11]
 print(task_6_1, task_6_2, task_6_3)
 # 7. Оперируя переменной about_me_fstring создать строку о вашем друге/подруге, подставив соответствующие значения о нем/ней.
-# about_me_fstring = f"Hello! My name is {name}. I'm {age} and I'm a {sex}."
-# print(about_me_fstring)
+about_me_fstring = f"Hello! My name is {name}. I'm {age} and I'm a {sex}."
+print(about_me_fstring)
 # 8. Из about_me_fstring создать список и сохранить в переменной list_from_str.
 list_from_str = about_me_fstring.split()
 print(list_from_str)
@@ -36,7 +36,6 @@ print(type(list_from_str))
 import string
 str_from_list = string.join(list_from_str)
 print(str_from_list)
-
 # 11. Использовав about_me_fstring создать новую строку, где литеры в верхнем регистре будут преобразованы в нижний регистр, а литеры в
 # нижнем регистре будут преобразованы в верхний регистр.
 print(about_me_fstring.swapcase())
