@@ -103,8 +103,8 @@ with open('names.txt', 'r', encoding='utf-8') as new_file:
 #2
 names = list(names)
 names.sort()
-names = ''.join(names)
-# print(names)
+names = '\n'.replace('\n', '').join(names)
+print(names)
 
 with open('names_sort.txt', 'w', encoding='utf-8') as new_file:
     new_file.write(names)
