@@ -61,6 +61,7 @@ with open('new_file.txt', 'r+') as new_file:
 # 1. Открыть тот же файл и перезаписать его содержимое на эту же строку в обратном порядке (задом на перед).
 with open('new_file.txt', 'r+') as new_file:
      reversString = new_file.read()
+     new_file.seek(0)
      new_file.write(reversString[::-1])
 
 # *************************ЗАДАЧА №4******************************
