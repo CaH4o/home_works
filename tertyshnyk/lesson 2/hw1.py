@@ -27,7 +27,8 @@ strWellcom = 'Hello! My name is %s. I\'m %i and I\'m a %s.' % (userName, userAge
 print(f'#3: {strWellcom}')
 
 #4
-strWellcom = 'Hello! My name is {n}. I\'m {a} and I\'m a {g}.'.format(a=userAge, g=userGender, n=userName)
+strWellcom = 'Hello! My name is {n}. I\'m {a} and I\'m a {g}.'\
+    .format(a=userAge, g=userGender, n=userName)
 print(f'#4: {strWellcom}')
 
 #5
@@ -36,7 +37,7 @@ print(f'#5: {about_me_fstring}')
 
 #6
 strSentence_1 = about_me_fstring[:about_me_fstring.find('!') + 1]
-strSentence_2 = about_me_fstring[about_me_fstring.find('!') + 2:about_me_fstring.find('.') + 1]
+strSentence_2 = about_me_fstring[about_me_fstring.find('!') + 2: about_me_fstring.find('.') + 1]
 strSentence_3 = about_me_fstring[about_me_fstring.find('.') + 2:]
 print(f'#6: {strSentence_1}')
 print(f'#6: {strSentence_2}')
@@ -46,13 +47,14 @@ print(f'#6: {strSentence_3}')
 friendName = 'Gloria'
 friendAge = 30
 friendGender = 'female'
-about_me_fstring = about_me_fstring.replace(userName, friendName)
-about_me_fstring = about_me_fstring.replace(str(userAge), str(friendAge))
-about_me_fstring = about_me_fstring.replace(userGender, friendGender)
+about_me_fstring = about_me_fstring\
+    .replace(userName, friendName)\
+    .replace(str(userAge), str(friendAge))\
+    .replace(userGender, friendGender)
 print(f'#7: {about_me_fstring}')
 
 #8
-list_from_str = about_me_fstring.replace('!','.').split('.')
+list_from_str = about_me_fstring.replace('!', '.').split('.')
 print(f'#8: {list_from_str}')
 
 #9
