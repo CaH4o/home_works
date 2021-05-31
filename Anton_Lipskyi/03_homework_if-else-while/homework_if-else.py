@@ -1,58 +1,107 @@
-file = open('user_list.txt', 'r+', encoding='utf-8')
-file_text = file.read()
-lines = file_text.split('\n')
+with open('user_list.txt', 'a+') as file:
+    file.seek(0)
+    file_text = file.read()
+    lines = file_text.split('\n')
 
-answer_acc = str(input('Do you have an account? \nAnswer y/n: ')).lower()
+    answer_acc = input('Do you have an account? \nAnswer y/n: ').lower()
 
-if answer_acc == 'n':
-    answer_new_reg = str(input('Do you want to create one?: ')).lower()
+    # проверим соответсвие шаблону y/n:
+    while True:
+        if answer_acc == 'y' or answer_acc == 'n':
+            break
+        else:
+            answer_acc = input('Type only \'y/n\'. Please try again: ').lower()
 
-    if answer_new_reg == 'y':
-        login = str(input('Enter your Login: ')).lower()
 
-        password = str(input('Enter your Password: '))
-        print('Registration has been completed')
-        file.write(f'\n{login} {password}')
+    if answer_acc == 'n':
+        answer_new_reg = input('Do you want to create one?: ').lower()
+
+        # снова проверим на соответсвтие шаблону:
+        while True:
+            if answer_new_reg == 'y' or answer_new_reg == 'n':
+                break
+            else:
+                answer_new_reg = input('Type only \'y/n\'. Please try again: ').lower()
+
+
+        if answer_new_reg == 'y':
+            login = input('Enter your Login: ').lower()
+
+            # нужно узнать, нет ли уже пользователя с таким логином, и, не пустой ли он.
+            # для этого 1 раз сделаем массив из существующих логинов,
+            # чтобы не перебирать его каждый раз, и убрать вложеные циклы while
+
+            user_array = []
+
+            for line in lines:
+                line.strip()
+                log_pass = line.split(' ')
+                login_value = log_pass[0]
+                user_array.append(login_value)
+
+            # теперь сама проверка:
+            while True:
+
+                if login == '':
+                    login = input('Login can\'t be empty. Please try again: ').lower()
+                elif login in user_array:
+                    login = input('This name has been taken already. Try another: ').lower()
+                else:
+                    break
+
+
+            password = input('Enter your Password: ')
+
+            # проверим, не пустой ли пароль:
+            while True:
+                if password == '':
+                    password = input('Password can\'t be empty. Please try again: ').lower()
+                else:
+                    break
+            # если мы здесь, можно регистрировать пользователя
+            file.write(f'\n{login} {password}')
+            print('Registration has been completed')
+
+        else:
+            print('Ok, you still can work at only-read mode')
+
+
+    # если пользователь в самом начале выбрал ответ 'Y':
     else:
-        print('Ok, you still can work at only-read mode')
+        # user_registered = False
 
-
-elif answer_acc == 'y':
-    user_registered = False
-
-    while not user_registered:
-        login = str(input('Enter your Login: ')).lower()
-        password = str(input('Enter your Password: '))
-
-        for i, line in enumerate(lines[1:]):
+        # получим словарь с логинами и паролями, а также список пользователей
+        user_dict = {}
+        for line in lines[1:]:
             line.strip()
             log_pass = line.split(' ')
             login_value = log_pass[0]
             password_value = log_pass[1]
+            user_dict.update({login_value: password_value})
 
-            # если пользователь в базе:
-            if login_value == login:
+        user_list = list(user_dict.keys())
 
-                # проверим пароль
-                correct_password = False
-                while not correct_password:
-                    # пока не получим правильный пароль:
-                    if password_value != password:
-                        password = str(input('Incorrect password, try again: '))
-                    else:  # если пароль правильный
-                        print('Hello and Welcome')
-                        correct_password = True
+        login = input('Enter your Login: ').lower()
+        while True:
+            if login not in user_list:
+                login = str(input('Incorrect Login, try again: '))
+            else:
+                break
 
-                # если мы здесь, то пароль, и логин совпали, всё хорошо
-                user_registered = True
-
-        # если вышли из цикла и дошли сюда, значит пользователя нет в базе, всё с начала
-        if not user_registered:
-            print('\nNo such user in system, please try again')
+        password = input('Enter your Password: ')
 
 
-else:
-    print('type only \'y/n\'')
+        # проверка правильности пароля:
+        correct_password = user_dict.get(login)
 
-file.close()
+        while True:
+            if password != correct_password:
+                password = str(input('Incorrect Password, try again: '))
+
+            else:
+                print('Hello and Welcome')
+                break
+
+
+
 
