@@ -84,7 +84,7 @@ with open('user_list.txt', 'a+') as file:
         login = input('Enter your Login: ').lower()
         while True:
             if login not in user_list:
-                login = str(input('Incorrect Login, try again: '))
+                login = input('Incorrect Login, try again: ')
             else:
                 break
 
@@ -96,7 +96,7 @@ with open('user_list.txt', 'a+') as file:
 
         while True:
             if password != correct_password:
-                password = str(input('Incorrect Password, try again: '))
+                password = input('Incorrect Password, try again: ')
 
             else:
                 print('Hello and Welcome')
