@@ -79,11 +79,10 @@ with open('user_list.txt', 'a+') as file:
             password_value = log_pass[1]
             user_dict.update({login_value: password_value})
 
-        user_list = list(user_dict.keys())
 
         login = input('Enter your Login: ').lower()
         while True:
-            if login not in user_list:
+            if login not in user_dict.keys():
                 login = input('Incorrect Login, try again: ')
             else:
                 break
