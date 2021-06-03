@@ -8,41 +8,48 @@
 # Данные о зарегестрированных пользователях хранить в файле 'users.txt', по желанию можете создать
 # файл для логирования событий регистрации и входа.
 
-# info_users = open('users.txt', 'r')
-#info_users.split(0)
-# st_users = info_users.read()
-# users = eval(st_users)
+info_users = open('users.txt', 'r')
+st_users = info_users.read()
+users = eval(st_users)
 
-info_users = open('users.txt', 'w')
-info_users.close()
-users = {'admin': 1234}
+print(users)
 print('Проходили ли вы регистрацию на нашем ресурсе ')
 ansver = input('Если да напишите "y", если нет , напишите "n"')
 yes = 'y'
 no = 'n'
 
-if ansver == yes :
+if ansver == yes:
     while True:
-      log = input('Введите логин')
-      password = input('Введите пароль')
-      if log and password in users.items():
+        log = input('Введите логин')
+        password = input('Введите пароль')
+        if log in users.keys() and password in users[log]:
             print('доступ разрешен')
             break
-      else:
-            print('Вы не корректно ввели имя/пароль пользователя')
-            continue
+
+        else:
+            ansver = input('не правильный пароль или логин,'
+                               'пробуем еще раз?\n'
+                      'Если да напишите "y", если нет , напишите "n"')
+            if ansver == yes:
+                continue
+            else:
+                break
+
+
 elif ansver == no:
     ansver2 = input('Желаете пройти регистрацию? \n'
-          'Если да, напишите "y", если нет , напишите "n"')
+              'Если да, напишите "y", если нет , напишите "n"')
     if ansver2 == yes:
         new_log = input('Введите логин')
         new_password = input('Введите пароль')
-        user_new = {new_log : new_password}
+        user_new = {new_log: new_password}
         users.update(user_new)
-        with open("users.txt", "w") as info_users :
+        with open("users.txt", "w") as info_users:
             info_users.write(str(users))
         print('Пользователь успешно зарегистрирован')
+
     else:
         print('Удачи вам')
 
-
+else:
+    print('вы не ввели корректно ответ перезапустите программу')
