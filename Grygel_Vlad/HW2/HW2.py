@@ -47,8 +47,8 @@ print(sample_dict)
 # 5.
 sample_dict['class_a']['student1']['marks']['physics'] = 83
 sample_dict['class_a']['student2']['marks']['physics'] = 84
-sample_dict['class_b']['student1']['marks'] = {'physics': 72}
-sample_dict['class_b']['student2']['marks'] = {'physics': 97}
+sample_dict['class_b']['student1']['marks']['physics'] = 72
+sample_dict['class_b']['student2']['marks']['physics'] = 97
 print(sample_dict)
 
 
