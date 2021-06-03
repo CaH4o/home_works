@@ -6,7 +6,7 @@
 
 with open('user_log.txt','a') as user_log,\
         open('users.txt','r+') as users_reg:
-    user_enter = input("Hello! Didn't make a register? Y/N: ")
+    user_enter = input("Hello! Already a member? Y/N: ")
     while True:
         if user_enter == 'Y' or user_enter == 'N':
             break
