@@ -1,0 +1,38 @@
+User creation with login vasya
+Failed login for vasya
+User creation with login igorek
+Failed login for dden
+Failed login for dden
+Failed login for dden
+Failed login for dden
+Failed login for okuznets
+Failed login for dden
+Failed login for dden
+Failed login for dden
+Failed login for dden
+Success login for dden
+User creation with login taras
+Success login for okuznets
+Success login for dden
+Failed login for dden
+User creation with login maria
+Failed login for test
+Success login for dden
+Failed login for
+Failed login for dden
+Success login for dden
+User creation with login dden failed
+User creation with login maxx
+Success login for maxx
+User creation with login maxx failed
+Failed login for test
+Success login for maxx
+Success login for dden
+Success login for dden
+Failed login for 
+Failed login for dden
+Success login for dden
+Failed login for dden
+Success login for dden
+Failed login for dden
+User creation with login tizer
