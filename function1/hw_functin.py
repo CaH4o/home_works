@@ -1,6 +1,8 @@
 # Task1
 
 from random import randint
+from copy import deepcopy
+
 
 n = 15
 list_of_num = []
@@ -19,9 +21,14 @@ def bobbles(sort_list):
     return sort_list
 
 
-sort_list = list_of_num.copy()
-print(sort_list)
-print(bobbles(list_of_num))
+print(list_of_num)
+print(bobbles(deepcopy(list_of_num)))
+
+
+
+
+
+
 
 
 # Task2
