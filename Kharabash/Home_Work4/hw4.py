@@ -32,7 +32,7 @@ for a in range(7):
     user_enter = input('Enter your best number: ')
     try:
         if int(user_enter) == '':
-            raise ValueError('comment')
+            raise ValueError
         else:
             print(f'Thank you for interaction,'
                   f' you have done! Your number {user_enter}')
