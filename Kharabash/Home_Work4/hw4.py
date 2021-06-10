@@ -29,14 +29,11 @@ def enter_last():
 
 all_attempts = 0
 for a in range(7):
-    user_enter = input('Enter your best number: ')
     try:
-        if int(user_enter) == '':
-            raise ValueError
-        else:
-            print(f'Thank you for interaction,'
+        user_enter = int(input('Enter your best number: '))
+        print(f'Thank you for interaction,'
                   f' you have done! Your number {user_enter}')
-            break
+        break
     except ValueError:
         all_attempts = a + 1
         if all_attempts == 4:
