@@ -13,16 +13,16 @@
 # завершить программу.
 
 # ЗАДАЧА №1
-# my_list = [1, 3, 75, 12, 47, 61, 99, 14, 6, 8, 1]
-#
-# x = (my_list)
-# n = len(x)
-# for i in range(1, n):
-#     for j in range(0, n - i):
-#         if x[j] > x[j + 1]:
-#             x[j], x[j + 1] = x[j + 1], x[j]
-# print(x)
-# print(sorted(my_list))
+my_list = [1, 3, 75, 12, 47, 61, 99, 14, 6, 8, 1]
+
+x = (my_list)
+n = len(x)
+for i in range(1, n):
+    for j in range(0, n - i):
+        if x[j] > x[j + 1]:
+            x[j], x[j + 1] = x[j + 1], x[j]
+print(x)
+print(sorted(my_list))
 
 # ЗАДАЧА №2
 for i in range(6):
