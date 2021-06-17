@@ -6,11 +6,11 @@ import os.path
 import string
 
 
-def haveMistakeOnEntering(fileFrom, fileTo, key):
-    if fileFrom == fileTo:
+def have_mistake_on_entering(file_from, file_to, key):
+    if file_from == file_to:
         print('file\'s names the same')
         return True
-    if len(fileFrom) < 3 or len(fileTo) < 3:
+    if len(file_from) < 3 or len(file_to) < 3:
         print('file\'s name should be more then 2 charts')
         return True
     try:
@@ -21,7 +21,7 @@ def haveMistakeOnEntering(fileFrom, fileTo, key):
     if int(key) > 26 or int(key) < -26:
         print('key should be in range -26 till 26')
         return True
-    if not os.path.isfile(f'{fileFrom}.txt'):
+    if not os.path.isfile(f'{file_from}.txt'):
         print('file is not find')
         return True
     # try:
@@ -34,21 +34,20 @@ def haveMistakeOnEntering(fileFrom, fileTo, key):
     return False
 
 
+def crypt_file(file_from, file_to, key, encrypt):
+    with open(f'{file_from}.txt', 'r') as fileFrom,\
+            open(f'{file_to}.txt', 'w') as fileTo:
+        file_content = fileFrom.read()
+        file_result = crypt_string(file_content, key, encrypt)
+        fileTo.write(file_result)
 
-def cryptFile(fileFrom, fileTo, key, encrypt):
-    with open(f'{fileFrom}.txt', 'r') as fileFrom,\
-            open(f'{fileTo}.txt', 'w') as fileTo:
-        fileContent = fileFrom.read()
-        fileResult = cryptString(fileContent, key, encrypt)
-        fileTo.write(fileResult)
 
-
-def cryptString(str, key, encrypt):
+def crypt_string(text, key, encrypt):
     alphabet = string.ascii_letters + string.digits
-    dicAlp = {v: i for i, v in enumerate(alphabet)}
+    dic_alp = {v: i for i, v in enumerate(alphabet)}
     result = ''
-    for s in str:
-        t = dicAlp.get(s)
+    for s in text:
+        t = dic_alp.get(s)
         if t == None:
             result += s
         else:
@@ -60,45 +59,42 @@ def cryptString(str, key, encrypt):
     return result
 
 
-
-def exitProgram(text):
+def exit_program(text):
     print(text)
     exit()
 
 
 while True:
-    userChose = input('Do you want to encrypt or decrypt the file?\n'
+    user_chose = input('Do you want to encrypt or decrypt the file?\n'
                       'e - encrypt, d - decrypt, s - stop program\n'
                       'Enter your answer here (e/d/s)...').lower()
-    if userChose == 'e' or userChose == 'd' or userChose == 's':
+    if user_chose == 'e' or user_chose == 'd' or user_chose == 's':
         break
     else:
         print('Please be careful next time in entering.')
 
-if userChose == 's':
-    exitProgram('See you next time.')
+if user_chose == 's':
+    exit_program('See you next time.')
 
-if userChose == 'e':
+if user_chose == 'e':
     check = True
     while check:
-        userFileFrom = input('Please enter the file name to encrypt...')
-        userFileTo = input('Please enter a new file name to result...')
-        userKey = input('Please enter the key...')
-        check = haveMistakeOnEntering(userFileFrom, userFileTo, userKey)
+        user_file_from = input('Please enter the file name to encrypt...')
+        user_file_to = input('Please enter a new file name to result...')
+        user_key = input('Please enter the key...')
+        check = have_mistake_on_entering(user_file_from, user_file_to, user_key)
 
-    userKey = int(userKey)
-    cryptFile(userFileFrom, userFileTo, userKey, True)
-    exitProgram('File encrypt successfully.\nSee you next time.')
+    crypt_file(user_file_from, user_file_to, int(user_key), True)
+    exit_program('File encrypt successfully.\nSee you next time.')
 
-if userChose == 'd':
+if user_chose == 'd':
     check = True
     while check:
-        userFileFrom = input('Please enter the file name to decrypt...')
-        userFileTo = input('Please enter a new file name to result...')
-        userKey = input('Please enter the key...')
-        check = haveMistakeOnEntering(userFileFrom, userFileTo, userKey)
+        user_file_from = input('Please enter the file name to decrypt...')
+        user_file_to = input('Please enter a new file name to result...')
+        user_key = input('Please enter the key...')
+        check = have_mistake_on_entering(user_file_from, user_file_to, user_key)
 
-    userKey = int(userKey)
-    cryptFile(userFileFrom, userFileTo, userKey, False)
-    exitProgram('File decrypt successfully.\nSee you next time.')
+    crypt_file(user_file_from, user_file_to, int(user_key), False)
+    exit_program('File decrypt successfully.\nSee you next time.')
 
